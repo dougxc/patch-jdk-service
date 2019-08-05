@@ -28,8 +28,9 @@ public class ServiceProviderProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        if (!roundEnv.processingOver()) {
-            System.out.println("found: " + processingEnv.getElementUtils().getTypeElement("org.graalvm.compiler.serviceprovider.ServiceProvider"));
+        if (roundEnv.processingOver()) {
+            String name = "org.graalvm.compiler.serviceprovider.ServiceProvider";
+            System.out.println("TypeElement for " + name + " is " + processingEnv.getElementUtils().getTypeElement(name));
         }
         return true;
     }
